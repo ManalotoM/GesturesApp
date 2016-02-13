@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-        return false;
+        gestureText.setText("Double Tap Confirmed");
+        return true;
     }
 
     @Override
@@ -68,12 +69,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
-        return false;
+        gestureText.setText("Tap Up Confirmed");
+        return true;
     }
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
+        gestureText.setText("Scroll confirmed");
+        return true;
     }
 
     @Override
@@ -87,6 +90,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     //ends implementation
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
